@@ -26,14 +26,14 @@ Reference: https://www.notion.so/alejandro9r/advanced_guide-glass_M0RPH1SM-b10f2
 
 1. Page in notion like the reference
 2. Export in HTML
-3. Rename it to `index-notion.html` or whatever but `index.html`
+3. Unzip the exported file with all images into a folder
 
 Example title: quickguide // glass_M0RPH1SM
 
 I call the script from an alias `martyr-guide-maker` in my `.bashrc`
 
-4. Run `martyr-guide-maker index-notion.html`. It will serve the page on http://localhost:8000
-5. Save page with `SingleFile` extension on Brave
+5. `cd` into the folder and run `martyr-guide-maker {thefile}.html`. It will serve the page on http://localhost:8000
+6. Save page with `SingleFile` extension on Brave
 
 SingleFile options:
 
