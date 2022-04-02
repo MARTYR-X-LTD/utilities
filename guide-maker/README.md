@@ -1,0 +1,42 @@
+# guide-maker // martyr⁠—
+
+PDFs are good for priting stuff and preserving a certain layout.
+
+But they're bad for modern digital purposes.
+
+Web pages are great. They're responsive, interactive, it just works.
+
+Guides and manuals for martyr⁠— products should be delivered in a way that are:
+
+- Easy to use like a PDF. Double click in a file and you're all set.
+- Just one file, like a PDF
+- Simple to read and understand
+
+HTML pretty much solves all these issues, except for the one file part. Want custom fonts and images inside the document? You'll end up with scattered folders and files along the .html file.
+
+That sucks. But... we have a workaround for that: the extension [SingleFile](https://github.com/gildas-lormeau/SingleFile) allows to turn every image and font into embedded base64 strings inside the html file.
+
+Basically, everything fits into one file! To make the images interactive and zoomable, a chunk of custom javascript code should be injected into it.
+
+And... that's it! The rest of the process is basically formating the html in martyr⁠— fashion, coming from an exported HTML page made in Notion.
+
+## Process
+
+Reference: https://www.notion.so/alejandro9r/advanced_guide-glass_M0RPH1SM-b10f25f99d1441dc9d304b32b3a5b098
+
+1. Page in notion like the reference
+2. Export in HTML
+3. Unzip files in a folder
+4. Rename to index-notion.html
+5. Add `favicon.svg` and `styles.css` to the folder
+
+Example title: quickguide // glass_M0RPH1SM
+
+6. Run `guide-maker.py` inside the folder. It will serve the page on http://localhost:8000
+7. Save page with `SingleFile` extension on Brave
+
+SingleFile options:
+ - Other resources: disable remove scripts
+ - HTML content: enable set content security policy
+
+Beware of upcoming changes to SingleFile due to Manifest v3. Maybe in the future I will need to use an old chromium build or firefox. Due to January 2023
