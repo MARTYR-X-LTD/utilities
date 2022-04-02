@@ -8,9 +8,9 @@ Web pages are great. They're responsive, interactive, it just works.
 
 Guides and manuals for martyr⁠— products should be delivered in a way that are:
 
-- Easy to use like a PDF. Double click in a file and you're all set.
-- Just one file, like a PDF
-- Simple to read and understand
+-  Easy to use like a PDF. Double click in a file and you're all set.
+-  Just one file, like a PDF
+-  Simple to read and understand
 
 HTML pretty much solves all these issues, except for the one file part. Want custom fonts and images inside the document? You'll end up with scattered folders and files along the .html file.
 
@@ -26,17 +26,18 @@ Reference: https://www.notion.so/alejandro9r/advanced_guide-glass_M0RPH1SM-b10f2
 
 1. Page in notion like the reference
 2. Export in HTML
-3. Unzip files in a folder
-4. Rename to index-notion.html
-5. Add `favicon.svg` and `styles.css` to the folder
+3. Rename it to `index-notion.html` or whatever but `index.html`
 
 Example title: quickguide // glass_M0RPH1SM
 
-6. Run `guide-maker.py` inside the folder. It will serve the page on http://localhost:8000
-7. Save page with `SingleFile` extension on Brave
+I call the script from an alias `martyr-guide-maker` in my `.bashrc`
+
+4. Run `martyr-guide-maker index-notion.html`. It will serve the page on http://localhost:8000
+5. Save page with `SingleFile` extension on Brave
 
 SingleFile options:
- - Other resources: disable remove scripts
- - HTML content: enable set content security policy
+
+-  Other resources: disable remove scripts
+-  HTML content: enable set content security policy
 
 Beware of upcoming changes to SingleFile due to Manifest v3. Maybe in the future I will need to use an old chromium build or firefox. Due to January 2023
