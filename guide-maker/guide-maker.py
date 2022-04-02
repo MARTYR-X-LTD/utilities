@@ -1,21 +1,38 @@
 from bs4 import BeautifulSoup, Tag
+from zipfile import ZipFile
 import http.server
 import socketserver
+import os, sys
 
-with open("index-notion.html") as fp:
-    html = BeautifulSoup(fp, 'html.parser')
 
-# print(html)
+if len(sys.argv) > 1:
+   html_file_path = sys.argv[1]
+else:
+   html_file_path = 'index-notion.html'
 
-# head = html.find("head")
+working_dir = os.path.dirname(os.path.abspath(html_file_path))
+html_file = os.path.basename(html_file_path)
+# script_dir will be used to get the .zip assets
+script_dir = os.path.dirname(__file__)
+
+print(f"Processing {html_file}")
+
 try:
-   with open('title.txt') as fp:
+	with open(f"{working_dir}/{html_file}") as fp:
+		html = BeautifulSoup(fp, 'html.parser')
+except:
+	print('No html file to process')
+	sys.exit(1)
+
+try:
+   with open(f'{working_dir}/title.txt') as fp:
       title = fp.readline()
 except:
    title = input("title?\n")
-   with open('title.txt', 'w') as fp:
+   with open(f'{working_dir}/title.txt', 'w') as fp:
       fp.write(title)
 
+print("Replacing stuff...")
 
 head_new = BeautifulSoup(f"""<head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -92,12 +109,21 @@ html.body.append(script.script)
 
 final_html = html.prettify().replace('white-space:pre-wrap', 'white-space:pre-line')
 
-with open("index.html", 'w') as fp:
+print("Saving index.html...")
+
+with open(f'{working_dir}/index.html', 'w') as fp:
     fp.write(html.prettify())
 
 
+print("Unziping style.css and favicon.svg...")
+
+with ZipFile(f'{script_dir}/styles-favicon.zip', 'r') as zipObj:
+	zipObj.extractall(working_dir)
+	print('Done!\n')
+
+
 PORT = 8000
-DIRECTORY = "."
+DIRECTORY = working_dir
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
