@@ -1,1 +1,4 @@
 guide-maker/example/
+*.html
+*.css
+*.svg
