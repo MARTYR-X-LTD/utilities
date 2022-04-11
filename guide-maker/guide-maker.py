@@ -107,12 +107,12 @@ html.body.article.header.replaceWith(header_new.header)
 html.body.append(script.script)
 
 
-final_html = html.prettify().replace('white-space:pre-wrap', 'white-space:pre-line')
+final_html = str(html).replace('white-space:pre-wrap', 'white-space:pre-line')
 
 print("Saving index.html...")
 
 with open(f'{working_dir}/index.html', 'w') as fp:
-    fp.write(html.prettify())
+    fp.write(final_html)
 
 
 print("Unziping style.css and favicon.svg...")
