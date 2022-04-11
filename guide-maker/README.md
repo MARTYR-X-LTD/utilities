@@ -24,21 +24,21 @@ And... that's it! The rest of the process is basically formating the html in mar
 
 Reference: https://www.notion.so/alejandro9r/advanced_guide-glass_M0RPH1SM-b10f25f99d1441dc9d304b32b3a5b098
 
-1. Page in notion like the reference
+1. Page in notion like the reference. Force black text for the table of contents.
 
-Breaking lines with enter+shift won't work in the final HTML. You have to place manual \<br\> tags to those places
+   Breaking lines with enter+shift won't work in the final HTML. You have to place manual \<br\> tags to those places
 
 2. Export in HTML
 3. Unzip the exported file with all images into a folder
 
-Example title: quickguide // glass_M0RPH1SM
+   Example title: quickguide // glass_M0RPH1SM
 
-I call the script from an alias `martyr-guide-maker` in my `.bashrc`
+   I call the script from an alias `martyr-guide-maker` in my `.bashrc`
 
 5. `cd` into the folder and run `martyr-guide-maker {thefile}.html`. It will serve the page on http://localhost:8000
 6. Save page with `SingleFile` extension on Brave
 
-SingleFile options:
+   SingleFile options:
 
 -  User interface: **disable** display an infobar \[...\]
 -  Other resources: **disable** remove scripts
