@@ -23,3 +23,31 @@ If the attribute `data-zoom` is present, it will make it compatible with [medium
    alt=""
 />
 ```
+
+### Output
+
+With `data-zoom`:
+
+```html
+<img
+   class="lazyload blur-up"
+   width="3840"
+   height="1992"
+   data-zoomable
+   data-src="https://cdn.shopify.com/s/files/1/0056/3766/8898/files/1-after.jpg?v=1652451658"
+   src="https://cdn.shopify.com/s/files/1/0056/3766/8898/files/1-after_900x.jpg?v=1652451658"
+/>
+```
+
+Without `data-zoom`:
+
+```html
+<img
+   class="lazyload blur-up"
+   width="3840"
+   height="1992"
+   data-widths="[180, 360, 540, 720, 900, 1080, 1260, 1440, 1620, 1800, 1980, 2160, 2340, 2520, 2700, 2880, 3060, 3240, 3420, 3600, 3840]"
+   data-src="https://cdn.shopify.com/s/files/1/0056/3766/8898/files/1-after_{width}x.jpg?v=1652451658"
+   data-sizes="auto"
+/>
+```

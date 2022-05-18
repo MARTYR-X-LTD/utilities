@@ -2,3 +2,7 @@ guide-maker/example/
 *.html
 *.css
 *.svg
+
+images-to-lazysizes/__pycache__/
+images-to-lazysizes/*.md
+images-to-lazysizes/*.html
