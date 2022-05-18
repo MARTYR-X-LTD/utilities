@@ -5,4 +5,5 @@ guide-maker/example/
 
 images-to-lazysizes/__pycache__/
 images-to-lazysizes/*.md
+!images-to-lazysizes/README.md
 images-to-lazysizes/*.html
