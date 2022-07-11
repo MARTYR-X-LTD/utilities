@@ -13,13 +13,14 @@ getfolder() {
 # For packages that have 1 item in one individual zip
 getfolder2() {
    file="$1"
-   filename="$(basename $1 .psd)"
-   zip_name="$filename-martyr.zip"
+   filename_noext="$(basename $1 | sed 's/\(.*\)\..*/\1/')"
+   filename="$(basename $1)"
+   zip_name="$filename_noext-martyr.zip"
    #zip $zip_name -j common/* $folder/*
    zip $zip_name -j common/*
    #(cd $folder; zip -u ../../$zip_name Textures/*)
    #(cd $folder; zip -u -r ../../$zip_name *)
-   (cd files; zip -u -j ../$zip_name $file)
+   (cd files; zip -u -j ../$zip_name $filename)
    
 }
 zip_update() {
@@ -44,9 +45,12 @@ export -f zip_update
 # -r is recursive while preserving subfolders structure
 # -j will place the files irrespective from the directory that was called. Will NOT preserve subfolder structure
 # can't be used together. Use the (cd etc etc) thing
-find . -type d -path '*/files/*' -prune | parallel getfolder {}
+
+# find . -type d -path '*/files/*' -prune | parallel getfolder {}
+find . -type f -path '*/files/*' -prune | parallel getfolder2 {}
 
 for f in *.zip; do
     x="$(zipinfo -t "$f" | awk '{print $1}')"
     echo "$f: contains $x files" 
 done
+
