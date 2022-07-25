@@ -95,8 +95,4 @@ def formaturlProduct(url):
 
 if __name__=='__main__':
     main()
-    p=mp.Pool(12) 
-    p.map(download_img, img_urls)
-    p.close()
-    p.join()
 
