@@ -1,6 +1,6 @@
 # utilities // martyr⁠—
 
-Some scripts that I use to do stuff work at [martyr⁠—](https://martyr.shop)
+Some scripts that I use to do misc stuff at [martyr⁠—](https://martyr.shop)
 
 ---
 
