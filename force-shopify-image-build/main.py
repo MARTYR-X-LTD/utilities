@@ -34,6 +34,8 @@ def main():
   p.close()
   p.join()
 
+  print(len(images_to_process))
+
   r=mp.Pool(10)
   r.map(download_image, images_to_process)
   r.close()
@@ -47,12 +49,17 @@ def get_img_urls(product_url):
   product_page = requests.get(product_url)
   soup_product = BeautifulSoup(product_page.content, 'html.parser')
   images = soup_product.find("div", class_="product-images")
+  images_mobile = soup_product.find("div", class_="product-images-mobile")
 
   for image_link in images.findAll("img"):
     low_res_url = formaturlImage(image_link.get('src'))
     images_to_process.append(low_res_url)
     high_res_url = formaturlImage(image_link.get('data-src'))
     images_to_process.append(high_res_url)
+  
+  for image_link in images_mobile.findAll("img", class_="only-mobile"):
+    mobile_res_url = formaturlImage(image_link.get('data-flickity-lazyload'))
+    images_to_process.append(mobile_res_url)
 
 
 
